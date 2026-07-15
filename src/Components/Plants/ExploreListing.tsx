@@ -2,7 +2,7 @@
 
 import { useEffect, useState, useCallback } from "react";
 import { useRouter, useSearchParams, usePathname } from "next/navigation";
-import { Button, Input } from "@heroui/react";
+import { Button, InputGroup } from "@heroui/react";
 import { FaSearch, FaFilter, FaSortAmountDown } from "react-icons/fa";
 import PlantCard, { Plant } from "../Share/PlantCard";
 import PlantCardSkeleton from "../Share/PlantCardSkeleton";
@@ -113,14 +113,18 @@ export default function ExploreListing() {
             <label className="block text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-2">
               Keyword
             </label>
-            <Input
-              type="text"
-              placeholder="Search monstera, lily..."
-              value={search}
-              onChange={(e) => setSearch(e.target.value)}
-              className="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl"
-              startContent={<FaSearch className="text-slate-400 text-xs" />}
-            />
+            <InputGroup className="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl flex items-center px-3 gap-2">
+              <InputGroup.Prefix>
+                <FaSearch className="text-slate-400 text-xs animate-none shrink-0" />
+              </InputGroup.Prefix>
+              <InputGroup.Input
+                type="text"
+                placeholder="Search monstera, lily..."
+                value={search}
+                onChange={(e) => setSearch(e.target.value)}
+                className="w-full bg-transparent focus:outline-none text-sm py-2"
+              />
+            </InputGroup>
           </div>
 
           {/* Category Filter */}

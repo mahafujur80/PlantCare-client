@@ -151,10 +151,15 @@ export default function ProfilePage() {
               <>
                 <Button
                   type="submit"
-                  isLoading={saving}
-                  className="bg-emerald-600 hover:bg-emerald-700 text-white font-semibold rounded-xl px-6 py-2.5"
+                  isDisabled={saving}
+                  className="bg-emerald-600 hover:bg-emerald-700 text-white font-semibold rounded-xl px-6 py-2.5 flex items-center justify-center gap-2"
                 >
-                  <FaCheck /> Save Changes
+                  {saving ? (
+                    <div className="h-4 w-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
+                  ) : (
+                    <FaCheck />
+                  )}
+                  Save Changes
                 </Button>
                 <Button
                   type="button"

@@ -96,7 +96,11 @@ const ExplorePlantsHeader = () => {
           <Select
             className="min-w-[180px]"
             placeholder="Category"
-            onChange={(value) => setCategory(value)}
+            onChange={(value) => {
+              if (value !== null) {
+                setCategory(String(value));
+              }
+            }}
           >
             <Label>Category</Label>
 
@@ -121,7 +125,11 @@ const ExplorePlantsHeader = () => {
           <Select
             className="min-w-[180px]"
             placeholder="Care Level"
-            onChange={(value) => setCareLevel(value)}
+            onChange={(value) => {
+              if (value !== null) {
+                setCareLevel(String(value));
+              }
+            }}
           >
             <Label>Care Level</Label>
 
@@ -146,7 +154,11 @@ const ExplorePlantsHeader = () => {
           <Select
             className="min-w-[180px]"
             placeholder="Sort By"
-            onChange={(value) => setSortBy(value)}
+            onChange={(value) => {
+              if (value !== null) {
+                setSortBy(String(value));
+              }
+            }}
           >
             <Label>Sort By</Label>
 

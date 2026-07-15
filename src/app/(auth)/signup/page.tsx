@@ -93,7 +93,7 @@ const RegisterPage = () => {
             }
           >
             <Label className="text-xs font-bold text-slate-500 uppercase tracking-wider">Full Name</Label>
-            <Input placeholder="John Doe" variant="bordered" className="rounded-xl mt-1.5" />
+            <Input placeholder="John Doe" className="rounded-xl mt-1.5" />
             <FieldError className="text-[10px] text-red-500 font-semibold mt-1" />
           </TextField>
 
@@ -102,7 +102,6 @@ const RegisterPage = () => {
             <Label className="text-xs font-bold text-slate-500 uppercase tracking-wider">Profile Image URL (Optional)</Label>
             <Input
               placeholder="https://example.com/avatar.jpg"
-              variant="bordered"
               className="rounded-xl mt-1.5"
             />
             <FieldError className="text-[10px] text-red-500 font-semibold mt-1" />
@@ -120,7 +119,7 @@ const RegisterPage = () => {
             }
           >
             <Label className="text-xs font-bold text-slate-500 uppercase tracking-wider">Email Address</Label>
-            <Input placeholder="john@example.com" variant="bordered" className="rounded-xl mt-1.5" />
+            <Input placeholder="john@example.com" className="rounded-xl mt-1.5" />
             <FieldError className="text-[10px] text-red-500 font-semibold mt-1" />
           </TextField>
 
@@ -139,13 +138,12 @@ const RegisterPage = () => {
                 name="password"
                 type={isVisible ? "text" : "password"}
                 placeholder="Enter password"
-                variant="bordered"
               />
               <InputGroup.Suffix>
                 <Button
                   isIconOnly
                   size="sm"
-                  variant="light"
+                  variant="ghost"
                   onPress={() => setIsVisible(!isVisible)}
                 >
                   {isVisible ? <BsEye className="text-slate-400" /> : <BsEyeSlash className="text-slate-400" />}
@@ -171,12 +169,11 @@ const RegisterPage = () => {
                 name="confirmPassword"
                 type={isVisible ? "text" : "password"}
                 placeholder="Re-enter password"
-                variant="bordered"
               />
               <InputGroup.Suffix>
                 <Button
                   isIconOnly
-                  variant="light"
+                  variant="ghost"
                   size="sm"
                   onPress={() => setIsVisible(!isVisible)}
                 >
@@ -190,10 +187,14 @@ const RegisterPage = () => {
           {/* SUBMIT BUTTON */}
           <Button
             type="submit"
-            isLoading={loading}
+            isDisabled={loading}
             className="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3 rounded-2xl shadow-md mt-2 flex items-center justify-center gap-2"
           >
-            <FaUserPlus />
+            {loading ? (
+              <div className="h-4 w-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
+            ) : (
+              <FaUserPlus />
+            )}
             Create Account
           </Button>
         </Form>

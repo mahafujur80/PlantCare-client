@@ -1,9 +1,6 @@
 import { MongoClient, Db } from "mongodb";
 
-const uri = process.env.MONGODB_URI as string;
-if (!uri) {
-  throw new Error("Please add your MONGODB_URI to .env");
-}
+const uri = process.env.MONGODB_URI || "mongodb://localhost:27017/dummy";
 
 let client: MongoClient;
 let db: Db;

@@ -129,7 +129,6 @@ const LoginPage = () => {
             </Label>
             <Input
               placeholder="john@example.com"
-              variant="bordered"
               className="rounded-xl mt-1.5"
             />
             <FieldError className="text-[10px] text-red-500 font-semibold mt-1" />
@@ -154,12 +153,11 @@ const LoginPage = () => {
                 name="password"
                 placeholder="Enter your password"
                 type={isVisible ? "text" : "password"}
-                variant="bordered"
               />
               <InputGroup.Suffix>
                 <Button
                   isIconOnly
-                  variant="light"
+                  variant="ghost"
                   size="sm"
                   onPress={() => setIsVisible(!isVisible)}
                 >
@@ -176,21 +174,26 @@ const LoginPage = () => {
           {/* SUBMIT BUTTON */}
           <Button
             type="submit"
-            isLoading={loading}
+            isDisabled={loading}
             className="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3 rounded-2xl shadow-md mt-2 flex items-center justify-center gap-2"
           >
-            <FaSignInAlt />
+            {loading ? (
+              <div className="h-4 w-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
+            ) : (
+              <FaSignInAlt />
+            )}
             Login
           </Button>
          
           {/* demo login btn */}
           <Button
             type="button"
-            variant="bordered"
+            variant="outline"
             onPress={handleDemoLogin}
-            isLoading={loading}
-            className="w-full border-emerald-600 text-emerald-600 hover:bg-emerald-50 font-bold py-3 rounded-2xl"
+            isDisabled={loading}
+            className="w-full border-emerald-600 text-emerald-600 hover:bg-emerald-50 font-bold py-3 rounded-2xl flex items-center justify-center gap-2"
           >
+            {loading && <div className="h-4 w-4 border-2 border-emerald-600 border-t-transparent rounded-full animate-spin" />}
             🌿 Demo Login
           </Button>
         </Form>

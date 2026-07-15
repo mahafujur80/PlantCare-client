@@ -148,10 +148,15 @@ export default function ContactPage() {
 
             <Button
               type="submit"
-              isLoading={loading}
+              isDisabled={loading}
               className="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3 rounded-2xl flex items-center justify-center gap-2 shadow-md transition-all"
             >
-              <FaPaperPlane className="text-xs" /> Send Message
+              {loading ? (
+                <div className="h-4 w-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
+              ) : (
+                <FaPaperPlane className="text-xs" />
+              )}
+              Send Message
             </Button>
           </form>
         </div>

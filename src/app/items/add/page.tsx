@@ -101,7 +101,7 @@ export default function AddPlantPage() {
               <Label className="text-xs font-bold text-slate-500 uppercase tracking-wider mb-2 flex items-center gap-1.5">
                 <FaLeaf className="text-emerald-500 text-[10px]" /> Plant Name
               </Label>
-              <Input placeholder="e.g. Swiss Cheese Plant" variant="bordered" className="rounded-xl" />
+              <Input placeholder="e.g. Swiss Cheese Plant" className="rounded-xl" />
               <FieldError className="text-[10px] text-red-500 font-semibold mt-1" />
             </TextField>
 
@@ -127,7 +127,7 @@ export default function AddPlantPage() {
             <Label className="text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">
               Catchy Summary / Tagline
             </Label>
-            <Input placeholder="e.g. Air-purifying tropical plant with gorgeous perforated foliage." variant="bordered" className="rounded-xl" />
+            <Input placeholder="e.g. Air-purifying tropical plant with gorgeous perforated foliage." className="rounded-xl" />
             <FieldError className="text-[10px] text-red-500 font-semibold mt-1" />
           </TextField>
 
@@ -150,7 +150,7 @@ export default function AddPlantPage() {
               <Label className="text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">
                 Base Store Price ($)
               </Label>
-              <Input placeholder="45" variant="bordered" className="rounded-xl" />
+              <Input placeholder="45" className="rounded-xl" />
               <FieldError className="text-[10px] text-red-500 font-semibold mt-1" />
             </TextField>
 
@@ -225,9 +225,10 @@ export default function AddPlantPage() {
           <div className="flex gap-4 border-t border-slate-100 pt-6">
             <Button
               type="submit"
-              isLoading={loading}
-              className="bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3 rounded-2xl flex-grow shadow-md"
+              isDisabled={loading}
+              className="bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3 rounded-2xl flex-grow shadow-md flex items-center justify-center gap-2"
             >
+              {loading && <div className="h-4 w-4 border-2 border-white border-t-transparent rounded-full animate-spin" />}
               Submit New Plant
             </Button>
             <Button

@@ -1,5 +1,5 @@
 import ExplorePlantsHeader from "@/Components/Plants/SearchFilter";
-import PlantCard from "@/Components/Share/PlantCard";
+import PlantCard, { Plant } from "@/Components/Share/PlantCard";
 import { getPlants } from "@/lib/PlantAction";
 import { Pagination } from '@heroui/react';
 import Link from 'next/link';
@@ -22,7 +22,7 @@ export default async function PlantsPage({ searchParams }: PlantsPageProps) {
   if (category) params.set("category", category);
   if (careLevel) params.set("careLevel", careLevel);
   if (sortBy) params.set("sortBy", sortBy);
-  params.set("page", page);
+  params.set("page", page || "1");
 
   const plants = await getPlants(params);
   const currentPage = plants?.page;
@@ -40,7 +40,7 @@ export default async function PlantsPage({ searchParams }: PlantsPageProps) {
     if (careLevel) params.set("careLevel", careLevel);
     if (sortBy) params.set("sortBy", sortBy);
 
-    params.set("page", pageNumber);
+    params.set("page", String(pageNumber));
 
     return params.toString();
   };
@@ -49,8 +49,8 @@ export default async function PlantsPage({ searchParams }: PlantsPageProps) {
     <div className="container mx-auto px-6 py-8">
       <ExplorePlantsHeader />
       <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6 items-start mb-8">
-        {plants?.data?.map((plant) => (
-          <PlantCard key={plant._id} plant={plant} />
+        {plants?.data?.map((plant: Plant) => (
+          <PlantCard key={plant._id || plant.id} plant={plant} />
         ))}
       </div>
 
