@@ -222,7 +222,7 @@ export default function NavBar() {
               {!user?.email ? (
                 <>
                   <Link href="/login" onClick={() => setIsMenuOpen(false)} className="w-full">
-                    <Button variant="bordered" className="w-full border-emerald-600 text-emerald-600 font-medium rounded-xl">
+                    <Button variant="outline" className="w-full border-emerald-600 text-emerald-600 font-medium rounded-xl">
                       Login
                     </Button>
                   </Link>

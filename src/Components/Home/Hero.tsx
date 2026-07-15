@@ -33,7 +33,7 @@ export default function Hero() {
                 </Button>
               </Link>
               <Link href="/about">
-                <Button variant="bordered" className="border-emerald-600/30 dark:border-emerald-500/30 hover:border-emerald-600 text-slate-700 dark:text-slate-200 font-semibold rounded-2xl px-6 py-6 text-base">
+                <Button variant="outline" className="border-emerald-600/30 dark:border-emerald-500/30 hover:border-emerald-600 text-slate-700 dark:text-slate-200 font-semibold rounded-2xl px-6 py-6 text-base">
                   Learn Care Science
                 </Button>
               </Link>
