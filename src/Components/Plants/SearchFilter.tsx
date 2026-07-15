@@ -79,7 +79,6 @@ const ExplorePlantsHeader = () => {
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             placeholder="Search plants..."
-            startContent={<BiSearch className="text-default-400" />}
             className="rounded-r-none w-full"
           />
 
