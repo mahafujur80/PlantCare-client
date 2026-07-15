@@ -21,8 +21,10 @@ import {
   MdSchedule
 } from "react-icons/md";
 
+type Region = "Dhaka" | "Rajshahi" | "Barishal" | "Sylhet" | "Chattogram" | "Khulna" | "Rangpur" | "Mymensingh";
+
 const SeasonalTips = () => {
-  const [selectedRegion, setSelectedRegion] = useState("Dhaka");
+  const [selectedRegion, setSelectedRegion] = useState<Region>("Dhaka");
   const [weatherAlert, setWeatherAlert] = useState(true);
 
   // Current month and season determination
@@ -40,7 +42,7 @@ const SeasonalTips = () => {
   const SeasonIcon = season.icon;
 
   // Regional tips database
-  const regionalTips = {
+  const regionalTips: Record<Region, string> = {
     Dhaka: "High humidity in Dhaka causes more fungal diseases. Use neem oil spray regularly for prevention.",
     Rajshahi: "Temperatures can exceed 40°C in Rajshahi. Apply mulching to retain soil moisture.",
     Barishal: "Riverine areas in Barishal may face salinity issues. Choose salt-tolerant plant varieties.",
@@ -148,7 +150,7 @@ const SeasonalTips = () => {
               </div>
               <select 
                 value={selectedRegion}
-                onChange={(e) => setSelectedRegion(e.target.value)}
+                onChange={(e) => setSelectedRegion(e.target.value as Region)}
                 className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent outline-none"
               >
                 <option value="Dhaka">Dhaka</option>
