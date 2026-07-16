@@ -3,7 +3,7 @@ import Link from "next/link";
 import { Button } from "@heroui/react";
 import { FaEye, FaPlus, FaTasks } from "react-icons/fa";
 import { getUserSession } from "@/lib/getSession";
-import { getMyPlants } from "@/lib/managePlants";
+import { getMyPlants } from "@/lib/PlantAction";
 import Image from "next/image";
 import { DeletePlantBtn } from "@/Components/Manage/DeletePlant";
 
@@ -50,7 +50,15 @@ export default async function ManagePlantsPage() {
   }
 
   // Fetch all plants
- const plants: Plant[] = await getMyPlants(user?.id) as Plant[];
+  let plants: Plant[] = [];
+  try {
+    const fetchedPlants = await getMyPlants(user?.id);
+    if (Array.isArray(fetchedPlants)) {
+      plants = fetchedPlants;
+    }
+  } catch (error) {
+    console.error("Failed to load plants:", error);
+  }
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-emerald-50 dark:from-slate-900 dark:to-slate-800">

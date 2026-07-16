@@ -1,6 +1,6 @@
 "use client";
 
-import { DeleteMyPlant } from "@/lib/managePlants";
+import { DeleteMyPlant } from "@/lib/PlantAction";
 import {AlertDialog, Button} from "@heroui/react";
 import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
